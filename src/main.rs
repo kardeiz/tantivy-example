@@ -179,11 +179,14 @@ fn main() -> err::Result<()> {
         search::create_index()?;
     }
 
+    let index = || {
+        println!("Starting up");
+        search::open_index().expect("Couldn't get index")
+    };
+    
     server::new(move || {
 
-        let index = search::open_index().expect("Couldn't get index");
-
-        App::with_state(State { index })
+        App::with_state(State { index: index() })
             .middleware(middleware::Logger::default())
             .resource("/", |r| r.get().with(root))
             .resource("/subjects", |r| r.get().with(subjects))
