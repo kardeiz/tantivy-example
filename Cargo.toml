@@ -1,0 +1,13 @@
+[package]
+authors = ["Jacob Brown <kardeiz@gmail.com>"]
+name = "tantivy-ex"
+version = "0.1.0"
+
+[dependencies]
+actix-web = "0.7.3"
+failure = "0.1.2"
+serde_json = "1.0.26"
+
+[dependencies.tantivy]
+git = "https://github.com/tantivy-search/tantivy"
+rev = "52b4575"
